@@ -4,14 +4,17 @@
 #get access token from petfinder servers
 t_res = Unirest.post "https://api.petfinder.com/v2/oauth2/token",
         parameters: {"grant_type" => "client_credentials",
-                      "client_id" => "#{ENV["PETFINDER_APIKEY"]}",
-                      "client_secret" => "#{ENV["PETFINDER_SECRET"]}"
+                      "client_id" => "abwlgnjXXuHyt0YRk52BESSSez0DkWZLYOrpOYjv8i347zjDvg",
+                      "client_secret" => "9nqLwZnxd3GbSIgFpjPBmlsQdeqyjS1vrn0arqfx"
                     }
 
 
 ENV["PETFINDER_TOKEN"] = t_res.body['access_token']
+if ENV["PETFINDER_TOKEN"] == nil 
+  puts 'no'
+end
 
-response = Unirest.get "https://api.petfinder.com/v2/animals?type=animal&breed=corgi&gender=male&limit=100",
+response = Unirest.get "https://api.petfinder.com/v2/animals?page=10&limit=100",
               headers: {Authorization: "Bearer #{ENV["PETFINDER_TOKEN"]}"}
 
     
@@ -29,7 +32,7 @@ else
         image_url = animal['photos'][0]['small']
       end
 
-      new_animal = Animal.create(
+      new_animal = Animal.find_or_create_by(
         name: animal['name'],
         source_id: animal['id'],
         url: animal['url'],

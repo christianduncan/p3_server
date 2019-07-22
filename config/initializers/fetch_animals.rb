@@ -14,7 +14,7 @@ if ENV["PETFINDER_TOKEN"] == nil
   puts 'no'
 end
 
-response = Unirest.get "https://api.petfinder.com/v2/animals?page=1&limit=100",
+response = Unirest.get "https://api.petfinder.com/v2/animals?page=1&location=10014&limit=100",
               headers: {Authorization: "Bearer #{ENV["PETFINDER_TOKEN"]}"}
 
   
@@ -31,6 +31,9 @@ else
       else
         image_url = animal['photos'][0]['medium'] 
         email = animal['contact']['email']
+        phone = animal['contact']['phone']
+        address1 = animal['contact']['address']['address1']
+        
       end
 
       new_animal = Animal.create(
@@ -40,10 +43,14 @@ else
         imageURL: image_url,
         description: animal['description'],
         email: email,
-        phone: animal['contact']['phone'],
-        address1: animal['contact']['address']['address1'],
+        phone: phone,
+        address1: address1,
         city: animal['contact']['address']['city'],
-        state: animal['contact']['address']['state']
+        state: animal['contact']['address']['state'],
+        gender: animal['gender'],
+        size: animal['size'],
+        age: animal['age'],
+        breed: animal['breeds']['primary']
       )
     end
   end

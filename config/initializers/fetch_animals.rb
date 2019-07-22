@@ -30,6 +30,7 @@ else
         image_url = ""
       else
         image_url = animal['photos'][0]['medium'] 
+        email = animal['contact']['email']
       end
 
       new_animal = Animal.create(
@@ -37,7 +38,12 @@ else
         source_id: animal['id'],
         url: animal['url'],
         imageURL: image_url,
-        description: animal['description']
+        description: animal['description'],
+        email: email,
+        phone: animal['contact']['phone'],
+        address1: animal['contact']['address']['address1'],
+        city: animal['contact']['address']['city'],
+        state: animal['contact']['address']['state']
       )
     end
   end

@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 2019_07_19_224425) do
     t.string "source_id"
     t.string "imageURL"
     t.string "description"
+    t.string "email"
+    t.string "phone"
+    t.string "address1"
+    t.string "city"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

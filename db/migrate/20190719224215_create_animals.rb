@@ -7,6 +7,11 @@ class CreateAnimals < ActiveRecord::Migration[5.2]
       t.string :source_id
       t.string :imageURL
       t.string :description
+      t.string :email
+      t.string :phone
+      t.string :address1
+      t.string :city
+      t.string :state
       
       
 

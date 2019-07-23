@@ -38,10 +38,10 @@ class Api::V1::UsersController < ApplicationController
 	end
 	
 	def favorite
-    	@animal = Animal.find(params[:brewery_id])
+    	@animal = Animal.find(params[:animal_id])
     	@user = User.find(params[:id])
 
-    	if @user.animals.include? @animals
+    	if @user.animals.include? @animal
       	@user.animals.delete(@animal)
 
     	else
@@ -49,7 +49,7 @@ class Api::V1::UsersController < ApplicationController
       		@user.save
     	end
 
-    render json: @user
+    	render json: @user
   	end
 
 

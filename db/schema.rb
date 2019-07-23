@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_190641) do
+ActiveRecord::Schema.define(version: 2019_07_23_165341) do
 
   create_table "animals", force: :cascade do |t|
     t.string "name"
@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 2019_07_22_190641) do
     t.string "size"
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "animal_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "animals_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "animal_id", null: false
+    t.index ["animal_id"], name: "index_animals_users_on_animal_id"
+    t.index ["user_id"], name: "index_animals_users_on_user_id"
   end
 
   create_table "shelters", force: :cascade do |t|

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
 	
-	has_many :favorites
+	has_and_belongs_to_many :animals
 	validates :username, uniqueness: true
     has_secure_password
     

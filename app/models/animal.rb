@@ -1,3 +1,3 @@
 class Animal < ApplicationRecord
-    has_many :favorites
+    has_and_belongs_to_many :users
 end

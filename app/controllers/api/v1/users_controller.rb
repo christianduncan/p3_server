@@ -35,5 +35,25 @@ class Api::V1::UsersController < ApplicationController
 		else
 			render json: {errors: user.errors.full_messages}
 		end
-    end
+	end
+	
+	def favorite
+    	@animal = Animal.find(params[:brewery_id])
+    	@user = User.find(params[:id])
+
+    	if @user.animals.include? @animals
+      	@user.animals.delete(@animal)
+
+    	else
+      		@user.animals << @animal
+      		@user.save
+    	end
+
+    render json: @user
+  	end
+
+
+
+
+	
 end 

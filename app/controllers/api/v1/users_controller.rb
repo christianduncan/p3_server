@@ -15,9 +15,14 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         
-        icon_arr = ["https://image.flaticon.com/icons/png/512/22/22732.png",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXj2LhAiir_KVEmUB7r-_w4QwIY1WxreRpNTPhf7p6Nd1Xv76Z",
-        "https://ae01.alicdn.com/kf/HTB17eL.QFXXXXa5XFXXq6xXFXXXD/1PCS-Cartoon-Cute-Hello-Kitty-Cat-Icon-Acrylic-Brooch-Badges-Decoration-Pin-Buttons-Backpack-Clothes-Accessories.jpg"]
+        icon_arr = ["https://github.com/christianduncan/p3_server/blob/master/app/assets/images/eagle.png?raw=true",
+        "https://github.com/christianduncan/p3_server/blob/master/app/assets/images/elephant.png?raw=true",
+		"https://github.com/christianduncan/p3_server/blob/master/app/assets/images/gator.png?raw=true",
+		"https://github.com/christianduncan/p3_server/blob/master/app/assets/images/giraffe.png?raw=true",
+		"https://github.com/christianduncan/p3_server/blob/master/app/assets/images/gorilla.png?raw=true",
+		"https://github.com/christianduncan/p3_server/blob/master/app/assets/images/lion.png?raw=true",
+		"https://github.com/christianduncan/p3_server/blob/master/app/assets/images/monkey.png?raw=true"
+	]
 		user = User.new(
 			name: params[:name],
 			username: params[:username],

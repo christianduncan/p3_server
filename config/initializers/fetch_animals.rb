@@ -14,7 +14,7 @@ if ENV["PETFINDER_TOKEN"] == nil
   puts 'no'
 end
 
-response = Unirest.get "https://api.petfinder.com/v2/animals?page=2&location=10014&limit=100",
+response = Unirest.get "https://api.petfinder.com/v2/animals?page=1&location=10014&limit=100",
               headers: {Authorization: "Bearer #{ENV["PETFINDER_TOKEN"]}"}
 
   
